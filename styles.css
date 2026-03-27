@@ -1414,3 +1414,18 @@ h1 {
   margin-bottom: 12px;
 }
 
+#rebuildRoomBtn {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  background: #eadfcb;
+  color: #5f4a2f;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+#rebuildRoomBtn:hover {
+  transform: translateY(-1px);
+  background: #e2d4bb;
+}

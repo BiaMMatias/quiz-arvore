@@ -306,6 +306,7 @@ const els = {
   bigResults: document.getElementById("bigResults"),
   bigResultsPanel: document.getElementById("bigResultsPanel"),
   facilitatorHint: document.getElementById("facilitatorHint"),
+  rebuildRoomBtn: document.getElementById("rebuildRoomBtn"),
 
   changeVoteBtn: document.getElementById("changeVoteBtn"),
   openVoteBtn: document.getElementById("openVoteBtn"),
@@ -816,6 +817,11 @@ function createLocalTransport() {
       emit();
     },
 
+    async rebuildRoom() {
+      state = createScenarioPayload(state.currentScenarioId);
+      emit();
+    },
+
     async nextCard() {
       const cards = state?.scenario?.cards || [];
       const currentIndex = Number(state.currentCardIndex || 0);
@@ -940,6 +946,11 @@ function createFirebaseTransport(config) {
       });
     },
 
+    async rebuildRoom() {
+      const scenarioId = currentState?.currentScenarioId || currentScenarioId;
+      await set(roomRef, createScenarioPayload(scenarioId));
+    },
+
     async nextCard() {
       await runTransaction(roomRef, (current) => {
         if (!current) return current;
@@ -1061,6 +1072,19 @@ async function toggleScenario() {
   localStorage.removeItem(localVoteKey);
 }
 
+async function rebuildRoom() {
+  if (!isFacilitadora) return;
+
+  const confirmed = window.confirm(
+    "Isso vai recriar a sala com a versão atual do cenário e zerar os votos do card atual. Deseja continuar?",
+  );
+
+  if (!confirmed) return;
+
+  await transport.rebuildRoom();
+  localStorage.removeItem(localVoteKey);
+}
+
 async function toggleResultsVisibility() {
   if (!isFacilitadora) return;
   const currentVisible = currentState?.resultsVisible !== false;
@@ -1073,6 +1097,7 @@ els.resetVotesBtn?.addEventListener("click", resetVotes);
 els.nextCardBtn?.addEventListener("click", nextCard);
 els.toggleScenarioBtn?.addEventListener("click", toggleScenario);
 els.toggleResultsBtn?.addEventListener("click", toggleResultsVisibility);
+els.rebuildRoomBtn?.addEventListener("click", rebuildRoom);
 
 /* =========================================================
    15) TESTES
