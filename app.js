@@ -421,9 +421,7 @@ function createOptionsState() {
   const options = {};
   for (const option of optionDefs) {
     options[option.id] = {
-      kicker: option.kicker,
       title: option.title,
-      help: option.help,
       votes: 0,
     };
   }
