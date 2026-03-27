@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fortalece Redes — Análise coletiva</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="fr-header">
+        <div class="fr-header-inner">
+          <div class="fr-header-brand">
+            <img
+              src="img/logo-fortalece.jpeg"
+              alt="Fortalece Redes"
+              class="fr-logo"
+            />
+
+            <div class="fr-title-group">
+              <span class="fr-eyebrow">Fortalece Redes</span>
+              <h2 class="fr-title">Encontro de Acolhimento — Turma 14</h2>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <span class="eyebrow" id="heroEyebrow">
+          Fortalece Redes • Análise coletiva
+        </span>
+
+        <h1 id="pollTitle">Análise coletiva da situação</h1>
+
+        <p class="subtitle" id="pollSubtitle">
+          Vamos observar a situação, analisar os cards e escolher entre CAUSA,
+          PROBLEMA e CONSEQUÊNCIA.
+        </p>
+
+        <div class="toolbar">
+          <div class="meta">
+            <div class="pill">
+              Total de respostas: <strong id="totalVotes">0</strong>
+            </div>
+
+            <div class="pill">
+              Sua escolha: <strong id="myVote">nenhuma</strong>
+            </div>
+
+            <div class="pill">
+              Status: <strong id="connectionStatus">iniciando…</strong>
+            </div>
+
+            <div class="pill" id="currentScenarioPill">Caso: restaurante</div>
+
+            <div class="pill" id="currentCardPill">Card: 1</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="scene-card">
+          <div class="scene-media">
+            <img id="sceneImage" src="" alt="Cena da situação analisada" />
+          </div>
+
+          <div class="scene-body">
+            <span class="scene-label" id="sceneLabel">Situação em análise</span>
+            <h2 class="scene-title" id="sceneTitle">Título do caso</h2>
+            <p class="scene-text" id="sceneText">Texto da situação.</p>
+          </div>
+
+          <div class="analysis-row">
+            <div class="analysis-stack">
+              <div class="active-card-panel active-card-panel--full">
+                <div class="active-card-header">
+                  <span class="scene-label">Card em análise</span>
+                  <strong id="cardCounter">1 de 1</strong>
+                </div>
+
+                <div class="active-card" id="activeCard">
+                  <!-- preenchido pelo JS -->
+                </div>
+              </div>
+
+              <section
+                class="panel vote-panel vote-panel--under"
+                id="participantPanel"
+              >
+
+                <p id="questionText">
+                  Este card, nesta análise, deve ser compreendido como:
+                </p>
+
+                <p id="voteFeedback" class="vote-feedback" aria-live="polite"></p>
+
+                <div class="tree-vote-list" id="optionList"></div>
+
+                <div class="actions">
+                  <button class="btn btn-secondary" id="changeVoteBtn">
+                    Alterar minha escolha
+                  </button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <aside class="options-panel">
+          <section class="panel" id="resultsPanel">
+            <h3>Leitura parcial do grupo</h3>
+            <div class="results-list" id="resultsList"></div>
+          </section>
+
+          <section class="panel" id="facilitatorPanel">
+            <h3>Painel de condução</h3>
+
+            <p>
+              A facilitadora controla a rodada atual, pode abrir ou encerrar a
+              votação, avançar para o próximo card, reiniciar o caso e trocar de
+              cenário.
+            </p>
+
+            <div class="facilitadora-controls">
+              <button class="btn btn-secondary" id="openVoteBtn">
+                Abrir votação
+              </button>
+
+              <button class="btn btn-secondary" id="closeVoteBtn">
+                Encerrar votação
+              </button>
+
+              <button class="btn btn-secondary" id="resetVotesBtn">
+                Reiniciar card
+              </button>
+
+              <button class="btn btn-secondary" id="nextCardBtn">
+                Próximo card
+              </button>
+
+              <button class="btn btn-secondary" id="toggleResultsBtn">
+                Ocultar resultados
+              </button>
+
+              <button class="btn btn-primary" id="toggleScenarioBtn">
+                Trocar caso
+              </button>
+            </div>
+          </section>
+
+          <section class="panel" id="bigResultsPanel">
+            <h3>Resultado ampliado</h3>
+            <div class="big-results" id="bigResults"></div>
+
+            <div class="hint" id="facilitatorHint">Dica de condução.</div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
