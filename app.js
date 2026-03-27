@@ -23,7 +23,7 @@ const firebaseConfig = {
   measurementId: "G-Q4WGQZNYK7",
 };
 
-const FORCE_RESET_ON_LOAD = true;
+const FORCE_RESET_ON_LOAD = false;
 const ROOM_ID = "fortalece-redes-cards-1";
 
 /* =========================================================
